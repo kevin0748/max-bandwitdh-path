@@ -31,7 +31,7 @@ public class Generator {
         int remainEdges = (int) (N * N * percentage / 2);
         int nodeIdx = 0;
         while (remainEdges > 0 && nodeIdx < N - 2) {
-            int newEdges = (int) (N * percentage) - g.edgeNum(nodeIdx);
+            int newEdges = (int) (N * percentage) - g.getEdgeNum(nodeIdx);
             if (newEdges <= 0) {
                 nodeIdx++;
                 continue;

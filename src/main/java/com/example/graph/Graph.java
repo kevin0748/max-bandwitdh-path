@@ -47,17 +47,21 @@ public class Graph {
         return true;
     }
 
-    public int edgeNum(int v) {
+    public int getEdgeNum(int v) {
         return edgeCnt[v];
+    }
+
+    public Node getEdgesList(int v) {
+        return head[v];
     }
 
     public void print() {
         for (int i = 0; i < size; i++) {
             Node n = head[i];
             if (n != null) {
-                System.out.printf("%d\t||\t", i);
+                System.out.printf("%4d || ", i);
                 while (n != null) {
-                    System.out.printf("%d ", n.dest);
+                    System.out.printf("%2d(%2d) ", n.dest, n.weight);
                     n = n.next;
                 }
                 System.out.println("");
