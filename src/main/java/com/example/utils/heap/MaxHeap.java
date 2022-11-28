@@ -1,4 +1,4 @@
-package com.example.heap;
+package com.example.utils.heap;
 
 public class MaxHeap {
     private int[] H;
@@ -20,7 +20,7 @@ public class MaxHeap {
             throw new IndexOutOfBoundsException("heap is empty");
         }
 
-        return 0;
+        return H[0];
     }
 
     public void insert(int k, int v) {
@@ -36,11 +36,15 @@ public class MaxHeap {
         return;
     }
 
+    public boolean empty() {
+        return size == 0;
+    }
+
     /*
      * Delete value in the heap
      */
-    public void delete(int v) {
-        int idx = P[v];
+    public void delete(int k) {
+        int idx = P[k];
         swap(idx, size - 1);
         size--;
 
