@@ -7,6 +7,7 @@ public class Graph {
     public int[] edgeCnt;
     public int totalEdges;
     public int size;
+    public Edge[] allEdges;
 
     public Graph(int N) {
         size = N;
@@ -60,20 +61,24 @@ public class Graph {
     }
 
     public Edge[] getAllEdges() {
-        Edge[] edges = new Edge[totalEdges];
+        if (allEdges != null) {
+            return allEdges;
+        }
+
+        allEdges = new Edge[totalEdges];
         int i = 0;
         for (int v = 0; v < size; v++) {
             Node it = head[v];
             while (it != null) {
                 if (v < it.dest) { // only add edge once
-                    edges[i++] = new Edge(v, it.dest, it.weight);
+                    allEdges[i++] = new Edge(v, it.dest, it.weight);
                 }
 
                 it = it.next;
             }
         }
 
-        return edges;
+        return allEdges;
     }
 
     public void print() {

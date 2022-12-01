@@ -5,7 +5,7 @@ import java.util.Random;
 public class Generator {
 
     private static Random rand = new Random();
-    private static int WEIGHT_UPPER_BOUND = 1000;
+    private static int WEIGHT_UPPER_BOUND = 1000000;
 
     /*
      * The average vertex degree is 6
@@ -18,6 +18,9 @@ public class Generator {
             while (!g.addEdge(rand.nextInt(N), rand.nextInt(N), randomWeight())) {
             }
         }
+
+        // pre generate all edges
+        g.getAllEdges();
 
         return g;
     }
@@ -49,6 +52,9 @@ public class Generator {
             remainEdges -= newEdges;
             nodeIdx++;
         }
+
+        // pre generate all edges
+        g.getAllEdges();
 
         return g;
     }
