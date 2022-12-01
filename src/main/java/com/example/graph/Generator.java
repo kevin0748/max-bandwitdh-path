@@ -5,6 +5,7 @@ import java.util.Random;
 public class Generator {
 
     private static Random rand = new Random();
+    private static int WEIGHT_UPPER_BOUND = 1000;
 
     /*
      * The average vertex degree is 6
@@ -53,7 +54,7 @@ public class Generator {
     }
 
     private static int randomWeight() {
-        return rand.nextInt(30) + 1;
+        return rand.nextInt(WEIGHT_UPPER_BOUND) + 1;
     }
 
     private static int randomInRange(int lower, int upper) {

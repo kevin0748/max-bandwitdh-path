@@ -5,6 +5,7 @@ public class Graph {
     public int[][] weight;
     public Node[] head;
     public int[] edgeCnt;
+    public int totalEdges;
     public int size;
 
     public Graph(int N) {
@@ -13,6 +14,7 @@ public class Graph {
         weight = new int[N][N];
         edgeCnt = new int[N];
         head = new Node[N];
+        totalEdges = 0;
         for (int i = 0; i < N; i++) {
             head[i] = null;
         }
@@ -44,6 +46,8 @@ public class Graph {
         }
         edgeCnt[b]++;
 
+        totalEdges++;
+
         return true;
     }
 
@@ -51,8 +55,25 @@ public class Graph {
         return edgeCnt[v];
     }
 
-    public Node getEdgesList(int v) {
+    public Node getEdgesHead(int v) {
         return head[v];
+    }
+
+    public Edge[] getAllEdges() {
+        Edge[] edges = new Edge[totalEdges];
+        int i = 0;
+        for (int v = 0; v < size; v++) {
+            Node it = head[v];
+            while (it != null) {
+                if (v < it.dest) { // only add edge once
+                    edges[i++] = new Edge(v, it.dest, it.weight);
+                }
+
+                it = it.next;
+            }
+        }
+
+        return edges;
     }
 
     public void print() {
